@@ -1,4 +1,4 @@
-package com.AtomyCompany.AtomycApp.model;
+package com.AtomyCompany.AtomycApp.model.LogIn;
 
 import jakarta.persistence.*;
 import lombok.Data;
