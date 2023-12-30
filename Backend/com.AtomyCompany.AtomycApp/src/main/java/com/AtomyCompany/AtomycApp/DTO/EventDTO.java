@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +17,7 @@ import java.util.List;
 @Data
 public class EventDTO implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 4L;
 
     private Long idEvent;
@@ -35,9 +37,9 @@ public class EventDTO implements Serializable {
 
     @ToString.Exclude
     @JsonIgnore
-    private GroupEvents groupEvents;
+    private GroupEventsDTO groupEvents;
 
-    public static EventDTO convertToDTO(Event event, GroupEvents groupEvents){
+    public static EventDTO convertToDTO(Event event, GroupEventsDTO groupEventsDTO){
 
         EventDTO eventDTO = new EventDTO();
 
@@ -48,11 +50,11 @@ public class EventDTO implements Serializable {
         eventDTO.setAssistantPrice(event.getAssistantPrice());
         eventDTO.setRegistEvent(event.getRegistEvent());
 
-        if (groupEvents != null){
-            eventDTO.setGroupEvents(groupEvents);
+        if (groupEventsDTO != null){
+            eventDTO.setGroupEvents(groupEventsDTO);
         }else{
             if (event.getGroupEvents() != null){
-                eventDTO.setGroupEvents(event.getGroupEvents());
+                eventDTO.setGroupEvents(GroupEventsDTO.convetToDTO(event.getGroupEvents()));
             }
         }
 

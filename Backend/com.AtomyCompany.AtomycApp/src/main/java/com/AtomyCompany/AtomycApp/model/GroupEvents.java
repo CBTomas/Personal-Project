@@ -17,7 +17,7 @@ public class GroupEvents {
     // Parameters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long groupEvents;
+    Long groupEventsID;
 
     @Column
     String groupName;
@@ -34,7 +34,7 @@ public class GroupEvents {
     @Override
     public String toString() {
         return "GroupEvents{" +
-                "groupEvents=" + groupEvents +
+                "groupEvents=" + groupEventsID +
                 ", groupName='" + groupName + '\'' +
                 ", registGroup=" + registGroup +
                 '}';
@@ -45,11 +45,11 @@ public class GroupEvents {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupEvents that = (GroupEvents) o;
-        return Objects.equals(groupEvents, that.groupEvents);
+        return Objects.equals(groupEventsID, that.groupEventsID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(groupEvents);
+        return Objects.hash(groupEventsID);
     }
 }

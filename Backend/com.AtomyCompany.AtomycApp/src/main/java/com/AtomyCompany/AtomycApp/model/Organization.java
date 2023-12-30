@@ -16,10 +16,10 @@ public class Organization {
     String address;
 
     @Column
-    String City;
+    String city;
 
     @Column
-    long members;
+    int members;
 
     // Functions
     @Override
@@ -27,7 +27,7 @@ public class Organization {
         return "Organizaton{" +
                 "name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", City='" + City + '\'' +
+                ", City='" + city + '\'' +
                 ", members=" + members +
                 '}';
     }

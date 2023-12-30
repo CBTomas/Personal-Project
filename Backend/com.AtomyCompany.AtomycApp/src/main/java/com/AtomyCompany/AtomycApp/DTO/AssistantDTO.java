@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
 import org.jetbrains.annotations.Nullable;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,6 +16,7 @@ import java.util.List;
 @Data
 public class AssistantDTO implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 4L;
 
     // DTO parameters
