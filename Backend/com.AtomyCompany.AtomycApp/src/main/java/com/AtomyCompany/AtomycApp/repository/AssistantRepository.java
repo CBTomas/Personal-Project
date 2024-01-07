@@ -13,9 +13,14 @@ public interface AssistantRepository extends JpaRepository<Assistant, Long> {
 
     List<Assistant> findByAssistantName(String name);
 
+    Assistant findByAssistantPhone(String phone);
+
     Assistant findByAssistantEmail(String email);
+
+    Assistant findByAssistantAddress(String address);
 
     List<Assistant> findByAssistantAge(int age);
 
-    Assistant findByRegistAssistant(Date date);
+    List<Assistant> findByAssistantRegist(Date date);
+
 }

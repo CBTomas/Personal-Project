@@ -14,7 +14,9 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findByEventName(String name);
 
-    Event findByEventDate(Date date);
+    List<Event> findByEventDate(Date date);
 
-    Event findByRegistEvent(Date date);
+    List<Event> findByEventPrice(int price);
+
+    List<Event> findByRegistEvent(Date date);
 }
