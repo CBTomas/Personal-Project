@@ -13,7 +13,7 @@ public interface AssistantRepository extends JpaRepository<Assistant, Long> {
 
     List<Assistant> findByAssistantName(String name);
 
-    Assistant findByAssistantPhone(String phone);
+    Assistant findByAssistantPhone(int phone);
 
     Assistant findByAssistantEmail(String email);
 

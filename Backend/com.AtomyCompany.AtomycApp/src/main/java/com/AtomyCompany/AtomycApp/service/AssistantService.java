@@ -15,7 +15,7 @@ public interface AssistantService {
 
     List<AssistantDTO> getAssistantByName(String name);
 
-    AssistantDTO getAssistantByPhone(String phone);
+    AssistantDTO getAssistantByPhone(int phone);
 
     AssistantDTO getAssistantByEmail(String email);
 

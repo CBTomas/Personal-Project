@@ -57,7 +57,7 @@ public class AssistantServiceImpl implements AssistantService{
     }
 
     @Override
-    public AssistantDTO getAssistantByPhone(String phone) {
+    public AssistantDTO getAssistantByPhone(int phone) {
 
         Assistant assistant = assistantRepository.findByAssistantPhone(phone);
 

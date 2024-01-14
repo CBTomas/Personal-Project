@@ -44,7 +44,7 @@ public class AssistantDTO implements Serializable {
         assistantDTO.setAssistantEmail(assistant.getAssistantEmail());
         assistantDTO.setAssistantAddress(assistant.getAssistantAddress());
         assistantDTO.setAssistantAge(assistant.getAssistantAge());
-        assistantDTO.setRegistAssistant(assistant.getRegistAssistant());
+        assistantDTO.setRegistAssistant(assistant.getAssistantRegist());
 
         return assistantDTO;
     }
@@ -60,7 +60,7 @@ public class AssistantDTO implements Serializable {
         assistant.setAssistantEmail(assistantDTO.getAssistantEmail());
         assistant.setAssistantAddress(assistantDTO.getAssistantAddress());
         assistant.setAssistantAge(assistantDTO.getAssistantAge());
-        assistant.setRegistAssistant(assistantDTO.getRegistAssistant());
+        assistant.setAssistantRegist(assistantDTO.getRegistAssistant());
 
         return null;
     }

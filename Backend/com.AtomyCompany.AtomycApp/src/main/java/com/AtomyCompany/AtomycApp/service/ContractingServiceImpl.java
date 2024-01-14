@@ -57,7 +57,7 @@ public class ContractingServiceImpl implements ContractingService{
     @Override
     public List<ContractingDTO> getContractingByPrice(int price) {
 
-        List<Contracting> contractings = contractingRepository.findByContractingPrice(price);
+        List<Contracting> contractings = contractingRepository.findByPrice(price);
         List<ContractingDTO> contractingDTOList = new ArrayList<>();
 
         for (Contracting contracting : contractings){

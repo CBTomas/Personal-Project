@@ -34,7 +34,7 @@ public class Assistant {
     int assistantAge;
 
     @Column
-    Date registAssistant;
+    Date assistantRegist;
 
     // Relations
     @ManyToMany(cascade = {CascadeType.ALL}, mappedBy = "assistantsEvent")
@@ -51,7 +51,7 @@ public class Assistant {
                 ", assistantEmail='" + assistantEmail + '\'' +
                 ", assistantAddress='" + assistantAddress + '\'' +
                 ", assistantAge=" + assistantAge +
-                ", registAssistant=" + registAssistant +
+                ", registAssistant=" + assistantRegist +
                 '}';
     }
 
