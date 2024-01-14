@@ -107,4 +107,9 @@ public class AssistantServiceImpl implements AssistantService{
 
         return assistantDTOList;
     }
+
+    @Override
+    public void deleteAssistant(Long id) {
+        assistantRepository.deleteById(id);
+    }
 }

@@ -93,4 +93,9 @@ public class EventServiceImpl implements EventService{
 
         return eventDTOList;
     }
+
+    @Override
+    public void deleteEvent(Long id) {
+        eventRepository.deleteById(id);
+    }
 }

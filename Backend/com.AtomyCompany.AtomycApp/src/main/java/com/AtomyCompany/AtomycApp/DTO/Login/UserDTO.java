@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class UsersDTO implements Serializable {
+public class UserDTO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 4L;
@@ -18,9 +18,9 @@ public class UsersDTO implements Serializable {
     private String userPassword;
     private Date registUser;
 
-    public static UsersDTO convertToDTO(Users users){
+    public static UserDTO convertToDTO(Users users){
 
-        UsersDTO userDTO = new UsersDTO();
+        UserDTO userDTO = new UserDTO();
 
         userDTO.setUserID(users.getUserId());
         userDTO.setUserEmail(users.getUserEmail());
@@ -30,14 +30,14 @@ public class UsersDTO implements Serializable {
         return userDTO;
     }
 
-    public static Users convertToEntity(UsersDTO usersDTO){
+    public static Users convertToEntity(UserDTO userDTO){
 
         Users user = new Users();
 
-        user.setUserId(usersDTO.getUserID());
-        user.setUserEmail(usersDTO.getUserEmail());
-        user.setUserPassword(usersDTO.getUserPassword());
-        user.setRegistUser(usersDTO.getRegistUser());
+        user.setUserId(userDTO.getUserID());
+        user.setUserEmail(userDTO.getUserEmail());
+        user.setUserPassword(userDTO.getUserPassword());
+        user.setRegistUser(userDTO.getRegistUser());
 
         return user;
     }

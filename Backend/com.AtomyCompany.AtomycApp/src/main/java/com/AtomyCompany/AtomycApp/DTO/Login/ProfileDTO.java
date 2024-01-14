@@ -21,7 +21,7 @@ public class ProfileDTO implements Serializable {
 
     @ToString.Exclude
     @JsonIgnore
-    private List<UsersDTO> userDTO = new ArrayList<>();
+    private List<UserDTO> userDTO = new ArrayList<>();
 
     public static ProfileDTO convertToDTO(Profile profile){
 
@@ -31,5 +31,15 @@ public class ProfileDTO implements Serializable {
         profileDTO.setNameProfile(profile.getNameProfile());
 
         return profileDTO;
+    }
+
+    public static Profile convertToEntity(ProfileDTO profileDTO){
+
+        Profile profile = new Profile();
+
+        profile.setIdProfile(profileDTO.getIdProfile());
+        profile.setNameProfile(profileDTO.getNameProfile());
+
+        return profile;
     }
 }

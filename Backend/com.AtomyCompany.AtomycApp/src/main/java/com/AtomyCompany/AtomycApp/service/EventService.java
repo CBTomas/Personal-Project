@@ -16,5 +16,5 @@ public interface EventService {
     List<EventDTO> getEventByDate(Date date);
     List<EventDTO> getEventByPrice(int price);
     List<EventDTO> getEventByRegist(Date date);
-
+    void deleteEvent(Long id);
 }

@@ -25,4 +25,5 @@ public interface AssistantService {
 
     List<AssistantDTO> getAssistantByRegist(Date date);
 
+    void deleteAssistant(Long id);
 }

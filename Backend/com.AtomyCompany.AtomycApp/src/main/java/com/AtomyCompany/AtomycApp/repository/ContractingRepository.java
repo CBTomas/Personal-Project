@@ -14,5 +14,7 @@ public interface ContractingRepository extends JpaRepository<Contracting, Long> 
 
     List<Contracting> findByContractingName(String name);
 
-    Contracting findByRegistContracting(Date date);
+    List<Contracting> findByContractingPrice(int price);
+
+    List<Contracting> findByRegistContracting(Date date);
 }
