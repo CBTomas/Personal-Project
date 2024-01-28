@@ -6,6 +6,8 @@ import com.AtomyCompany.AtomycApp.repository.ConfigurationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,5 +38,17 @@ public class ConfigurationServiceImpl implements ConfigurationService{
     @Override
     public void deleteConfiguration(String name) {
         configurationRepository.deleteById(name);
+    }
+
+    @Override
+    public List<ConfigurationDTO> listAllConfigurations() {
+
+        List<Configuration> configurations = configurationRepository.findAll();
+        List<ConfigurationDTO> configurationDTOList = new ArrayList<>();
+
+        for (Configuration configuration: configurations){
+            configurationDTOList.add(ConfigurationDTO.convertToDTO(configuration));
+        }
+        return configurationDTOList;
     }
 }
