@@ -1,10 +1,8 @@
 package com.AtomyCompany.AtomycApp.controllers;
-
 import com.AtomyCompany.AtomycApp.Application;
 import com.AtomyCompany.AtomycApp.DTO.OrganizationDTO;
 import com.AtomyCompany.AtomycApp.service.OrganizationService;
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,8 +57,9 @@ public class OrganizationController {
         }
     }
 
-    public ResponseEntity<String> deleteOrganization(@PathVariable String name){
-        organizationService.deleteOrganization(name);
+    @DeleteMapping("atomycapp/organization/{idOrganization}")
+    public ResponseEntity<String> deleteOrganization(@PathVariable String idOrganization){
+        organizationService.deleteOrganization(idOrganization);
         return new ResponseEntity<>("The organization has been eliminated", HttpStatus.OK);
     }
 
