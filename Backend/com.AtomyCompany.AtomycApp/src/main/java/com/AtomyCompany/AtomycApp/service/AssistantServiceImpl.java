@@ -31,6 +31,17 @@ public class AssistantServiceImpl implements AssistantService{
     }
 
     @Override
+    public List<AssistantDTO> listAllAssistants() {
+
+        List<Assistant> assistants = assistantRepository.findAll();
+        List<AssistantDTO> assistantDTOList = new ArrayList<>();
+        for (Assistant assistant: assistants){
+            assistantDTOList.add(AssistantDTO.convertToDTO(assistant));
+        }
+        return assistantDTOList;
+    }
+
+    @Override
     public AssistantDTO getAssistantById(Long id) {
 
         Optional<Assistant> assistant = assistantRepository.findById(id);

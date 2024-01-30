@@ -11,6 +11,8 @@ public interface AssistantService {
 
     AssistantDTO saveAssistant(AssistantDTO assistantDTO);
 
+    List<AssistantDTO> listAllAssistants();
+
     AssistantDTO getAssistantById(Long id);
 
     List<AssistantDTO> getAssistantByName(String name);
