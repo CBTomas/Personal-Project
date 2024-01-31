@@ -235,6 +235,263 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Assistant",
+			"item": [
+				{
+					"name": "List All Assistant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Assistant By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Assistant By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant/nm/Tomas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant",
+								"nm",
+								"Tomas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Assistant By Phone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant/ph/666666666",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant",
+								"ph",
+								"666666666"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Assistant By Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant/em/tomas.castello4@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant",
+								"em",
+								"tomas.castello4@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Assistant By Address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant/add/Calle la Barca",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant",
+								"add",
+								"Calle la Barca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Assistant By Age",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant/ag/25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant",
+								"ag",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Assistant By Regist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant/rg/25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant",
+								"rg",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Assistant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Tomas\",\r\n    \"Phone\":666666666,\r\n    \"Email\":\"tomas.castello4@gmail.com\",\r\n    \"Address\":\"Calle la Barca\",\r\n    \"Age\":25,\r\n    \"Regist\":\"30/01/2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Assistant",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Tomas\",\r\n    \"Phone\":666666667,\r\n    \"Email\":\"tomas.castello4@gmail.com\",\r\n    \"Address\":\"Calle la Barca\",\r\n    \"Age\":25,\r\n    \"Regist\":\"30/01/2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Assistant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/assistant/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"assistant",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

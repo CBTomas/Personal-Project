@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.List;
 
+@RestController
 public class AssistantController {
 
     private static final Logger myLog= LoggerFactory.getLogger(Application.class);
@@ -88,7 +89,7 @@ public class AssistantController {
         }
     }
 
-    @GetMapping("atomycapp/assistant/add/{assistantAge}") //Show All Assistants with x Age
+    @GetMapping("atomycapp/assistant/age/{assistantAge}") //Show All Assistants with x Age
     public ResponseEntity<List<AssistantDTO>> showAssistantsByAge(@PathVariable int assistantAge){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<AssistantDTO> assistantDTOList = assistantService.getAssistantByAge(assistantAge);

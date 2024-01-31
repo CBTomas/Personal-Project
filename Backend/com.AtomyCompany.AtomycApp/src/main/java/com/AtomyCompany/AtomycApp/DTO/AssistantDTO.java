@@ -50,7 +50,7 @@ public class AssistantDTO implements Serializable {
     }
 
     // Function that converts the dto object to an entity
-    public static @Nullable Assistant convertToEntity(AssistantDTO assistantDTO){
+    public static Assistant convertToEntity(AssistantDTO assistantDTO){
 
         Assistant assistant = new Assistant();
 
@@ -62,6 +62,6 @@ public class AssistantDTO implements Serializable {
         assistant.setAssistantAge(assistantDTO.getAssistantAge());
         assistant.setAssistantRegist(assistantDTO.getRegistAssistant());
 
-        return null;
+        return assistant;
     }
 }
