@@ -10,6 +10,7 @@ public class Organization {
 
     // Parameters
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String name;
 
     @Column

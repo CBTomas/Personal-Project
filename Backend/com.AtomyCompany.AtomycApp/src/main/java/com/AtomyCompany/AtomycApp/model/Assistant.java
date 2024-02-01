@@ -18,22 +18,22 @@ public class Assistant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idAssistant;
 
-    @Column
+    @Column(name = "name")
     String assistantName;
 
-    @Column
+    @Column(name = "phone")
     int assistantPhone;
 
-    @Column
+    @Column(name = "email")
     String assistantEmail;
 
-    @Column
+    @Column(name = "address")
     String assistantAddress;
 
-    @Column
+    @Column(name = "age")
     int assistantAge;
 
-    @Column
+    @Column(name = "regist")
     Date assistantRegist;
 
     // Relations
