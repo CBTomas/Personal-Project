@@ -45,10 +45,6 @@ public class AssistantServiceImpl implements AssistantService{
 
         Optional<Assistant> assistant = assistantRepository.findById(id);
 
-        /*if(assistant.isPresent()){
-            return AssistantDTO.convertToDTO(assistant.get());
-        }*/
-
         return assistant.map(AssistantDTO::convertToDTO).orElse(null);
 
     }

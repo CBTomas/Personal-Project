@@ -28,10 +28,10 @@ public class ContractingDTO implements Serializable {
 
         ContractingDTO contractingDTO = new ContractingDTO();
 
-        contractingDTO.setIdContracting(contractingDTO.getIdContracting());
-        contractingDTO.setContractingName(contractingDTO.getContractingName());
-        contractingDTO.setDescription(contractingDTO.getDescription());
-        contractingDTO.setPrice(contractingDTO.getPrice());
+        contractingDTO.setIdContracting(contracting.getIdContracting());
+        contractingDTO.setContractingName(contracting.getContractingName());
+        contractingDTO.setDescription(contracting.getDescription());
+        contractingDTO.setPrice(contracting.getPrice());
         contractingDTO.setRegistrationDate(contracting.getRegistrationDate());
 
         if (eventDTO != null){
@@ -53,7 +53,7 @@ public class ContractingDTO implements Serializable {
         contracting.setContractingName(contractingDTO.getContractingName());
         contracting.setDescription(contractingDTO.getDescription());
         contracting.setPrice(contractingDTO.getPrice());
-        contracting.setRegistrationDate(contractingDTO.registrationDate);
+        contracting.setRegistrationDate(contractingDTO.getRegistrationDate());
 
         if (contractingDTO.getEventContracting() != null){
             contracting.setEventContracting(EventDTO.convertToEntity(contractingDTO.getEventContracting()));

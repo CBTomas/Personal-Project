@@ -144,7 +144,7 @@
 					"response": []
 				},
 				{
-					"name": "Get one parameter",
+					"name": "Get Conf By ID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -165,7 +165,7 @@
 					"response": []
 				},
 				{
-					"name": "Get all configurations",
+					"name": "List All",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -260,7 +260,7 @@
 					"response": []
 				},
 				{
-					"name": "List Assistant By ID",
+					"name": "Get Assistant By ID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -282,9 +282,21 @@
 				},
 				{
 					"name": "List Assistant By Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:9090/atomycapp/assistant/nm/Tomas",
 							"protocol": "http",
@@ -303,7 +315,7 @@
 					"response": []
 				},
 				{
-					"name": "List Assistant By Phone",
+					"name": "Get Assistant By Phone",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -325,7 +337,7 @@
 					"response": []
 				},
 				{
-					"name": "List Assistant By Email",
+					"name": "Get Assistant By Email",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -352,7 +364,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9090/atomycapp/assistant/add/Calle la Barca",
+							"raw": "http://localhost:9090/atomycapp/assistant/add/Barca",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -362,7 +374,7 @@
 								"atomycapp",
 								"assistant",
 								"add",
-								"Calle la Barca"
+								"Barca"
 							]
 						}
 					},
@@ -374,7 +386,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9090/atomycapp/assistant/ag/25",
+							"raw": "http://localhost:9090/atomycapp/assistant/age/25",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -383,7 +395,7 @@
 							"path": [
 								"atomycapp",
 								"assistant",
-								"ag",
+								"age",
 								"25"
 							]
 						}
@@ -396,7 +408,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9090/atomycapp/assistant/rg/25",
+							"raw": "http://localhost:9090/atomycapp/assistant/rg/2024-01-31",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -406,7 +418,7 @@
 								"atomycapp",
 								"assistant",
 								"rg",
-								"25"
+								"2024-01-31"
 							]
 						}
 					},
@@ -419,7 +431,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Tomas\",\r\n    \"Phone\":666666666,\r\n    \"Email\":\"tomas.castello4@gmail.com\",\r\n    \"Address\":\"Calle la Barca\",\r\n    \"Age\":25,\r\n    \"Regist\":\"30/01/2024\"\r\n}",
+							"raw": "{\r\n    \"assistantName\":\"Tomas\",\r\n    \"assistantAddress\":\"Barca\",\r\n    \"assistantAge\":25,\r\n    \"assistantEmail\":\"tomas.castello4@gmail.com\", \r\n    \"assistantPhone\":\"666666666\", \r\n    \"registrationDate\":\"2024-01-31\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -448,7 +460,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Tomas\",\r\n    \"Phone\":666666667,\r\n    \"Email\":\"tomas.castello4@gmail.com\",\r\n    \"Address\":\"Calle la Barca\",\r\n    \"Age\":25,\r\n    \"Regist\":\"30/01/2024\"\r\n}",
+							"raw": "{\r\n    \"idAssistant\": 1,\r\n    \"assistantName\":\"Tomas\",\r\n    \"assistantAddress\":\"Barca\",\r\n    \"assistantAge\":25,\r\n    \"assistantEmail\":\"tomas.castello4@gmail.com\", \r\n    \"assistantPhone\":\"+34 666666666\", \r\n    \"registrationDate\":\"2024-01-31\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -485,6 +497,410 @@
 							"path": [
 								"atomycapp",
 								"assistant",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "List Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/event/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"event",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/event/nm/Fallas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"event",
+								"nm",
+								"Fallas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List Events By Date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/event/dt/2024-03-17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"event",
+								"dt",
+								"2024-03-17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List Events By Price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/event/prc/25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"event",
+								"prc",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List Event By Registration Date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/event/rgst/2024-03-17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"event",
+								"rgst",
+								"2024-03-17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"eventName\":\"Fallas\",\r\n    \"eventDate\":\"2024-03-17\",\r\n    \"eventPrice\":25,\r\n    \"assistantPrice\":12,\r\n    \"registrationDate\":\"2024-03-17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idEvent\":1,\r\n    \"eventName\":\"Fallas\",\r\n    \"eventDate\":\"2024-03-17\",\r\n    \"eventPrice\":25,\r\n    \"assistantPrice\":12,\r\n    \"registrationDate\":\"2024-03-17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/event/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"event",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contracting",
+			"item": [
+				{
+					"name": "Get Contracting By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/contracting/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"contracting",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Contractings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/contracting",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"contracting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Contracting By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/contracting/nm/Orquesta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"contracting",
+								"nm",
+								"Orquesta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Contractings By Price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/contracting/prc/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"contracting",
+								"prc",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Contracting By Regist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/contracting/rgst/2024-03-17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"contracting",
+								"rgst",
+								"2024-03-17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Contracting",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contractingName\":\"Orquesta\",\r\n    \"description\":\"Orquesta que actuara\",\r\n    \"price\":100, \r\n    \"registrationDate\":\"2024-03-17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/contracting",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"contracting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Contracting",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idContracting\":1,\r\n    \"contractingName\":\"Orquesta\",\r\n    \"description\":\"Orquesta que actuara\",\r\n    \"price\":100,\r\n    \"registrationDate\":\"2024-03-17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/contracting",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"contracting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Contracting",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/atomycapp/contracting/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"atomycapp",
+								"contracting",
 								"1"
 							]
 						}

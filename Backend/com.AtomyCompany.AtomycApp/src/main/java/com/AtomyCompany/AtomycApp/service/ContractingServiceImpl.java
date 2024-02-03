@@ -29,6 +29,16 @@ public class ContractingServiceImpl implements ContractingService{
     }
 
     @Override
+    public List<ContractingDTO> listAllContractings() {
+        List<Contracting> contractings = contractingRepository.findAll();
+        List<ContractingDTO> contractingDTOList = new ArrayList<>();
+        for (Contracting contracting:contractings){
+            contractingDTOList.add(ContractingDTO.convertToDTO(contracting,null));
+        }
+        return contractingDTOList;
+    }
+
+    @Override
     public ContractingDTO getContractingById(Long id) {
 
         Optional<Contracting> contracting = contractingRepository.findById(id);

@@ -16,13 +16,13 @@ public class Contracting {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idContracting;
 
-    @Column
+    @Column(name = "name")
     String contractingName;
 
-    @Column
+    @Column(name = "description")
     String description;
 
-    @Column
+    @Column(name = "price")
     int price;
 
     @Column

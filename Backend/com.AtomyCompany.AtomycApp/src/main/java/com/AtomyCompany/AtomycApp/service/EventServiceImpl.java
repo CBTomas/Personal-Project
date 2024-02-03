@@ -28,6 +28,16 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
+    public List<EventDTO> listAllEvents() {
+        List<Event> events = eventRepository.findAll();
+        List<EventDTO> eventDTOList = new ArrayList<>();
+        for (Event event: events){
+            eventDTOList.add(EventDTO.convertToDTO(event,null));
+        }
+        return eventDTOList;
+    }
+
+    @Override
     public EventDTO getEventById(Long id) {
 
         Optional<Event> event = eventRepository.findById(id);

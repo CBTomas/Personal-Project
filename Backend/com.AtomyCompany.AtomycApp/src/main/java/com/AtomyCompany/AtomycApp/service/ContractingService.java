@@ -11,6 +11,8 @@ public interface ContractingService {
 
     ContractingDTO saveContracting(ContractingDTO contractingDTO);
 
+    List<ContractingDTO> listAllContractings();
+
     ContractingDTO getContractingById(Long id);
 
     List<ContractingDTO> getContractingByName(String name);

@@ -10,6 +10,9 @@ import java.util.List;
 public interface EventService {
 
     EventDTO saveEvent(EventDTO eventDTO);
+
+    List<EventDTO> listAllEvents();
+
     EventDTO getEventById(Long id);
     List<EventDTO> getEventByName(String name);
     List<EventDTO> getEventByDate(LocalDate date);
