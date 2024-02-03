@@ -3,8 +3,7 @@ package com.AtomyCompany.AtomycApp.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
-
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Data
@@ -27,7 +26,7 @@ public class Contracting {
     int price;
 
     @Column
-    Date registContracting;
+    LocalDate registrationDate;
 
     // Relations
     @ManyToOne
@@ -43,7 +42,7 @@ public class Contracting {
                 ", contractingName='" + contractingName + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", registContracting=" + registContracting +
+                ", registContracting=" + registrationDate +
                 '}';
     }
 

@@ -1,15 +1,13 @@
 package com.AtomyCompany.AtomycApp.service;
 
 import com.AtomyCompany.AtomycApp.DTO.EventDTO;
-import com.AtomyCompany.AtomycApp.DTO.GroupEventsDTO;
 import com.AtomyCompany.AtomycApp.model.Event;
 import com.AtomyCompany.AtomycApp.repository.EventRepository;
-import com.AtomyCompany.AtomycApp.repository.GroupEventsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,7 +54,7 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public List<EventDTO> getEventByDate(Date date) {
+    public List<EventDTO> getEventByDate(LocalDate date) {
 
         List<Event> events = eventRepository.findByEventDate(date);
         List<EventDTO> eventDTOList = new ArrayList<>();
@@ -82,9 +80,9 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public List<EventDTO> getEventByRegist(Date date) {
+    public List<EventDTO> getEventByRegist(LocalDate date) {
 
-        List<Event> events = eventRepository.findByRegistEvent(date);
+        List<Event> events = eventRepository.findByRegistrationDate(date);
         List<EventDTO> eventDTOList = new ArrayList<>();
 
         for (Event event : events){

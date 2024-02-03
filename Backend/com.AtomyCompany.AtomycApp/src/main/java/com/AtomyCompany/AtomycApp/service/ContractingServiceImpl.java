@@ -6,8 +6,8 @@ import com.AtomyCompany.AtomycApp.repository.ContractingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,10 +34,6 @@ public class ContractingServiceImpl implements ContractingService{
         Optional<Contracting> contracting = contractingRepository.findById(id);
 
         return contracting.map(value -> ContractingDTO.convertToDTO(value, null)).orElse(null);
-
-        /* if (contracting.isPresent()){
-            return ContractingDTO.convertToDTO(contracting.get(), null);
-        }*/
 
     }
 
@@ -68,9 +64,9 @@ public class ContractingServiceImpl implements ContractingService{
     }
 
     @Override
-    public List<ContractingDTO> getContractingByRegist(Date date) {
+    public List<ContractingDTO> getContractingByRegist(LocalDate date) {
 
-        List<Contracting> contractings = contractingRepository.findByRegistContracting(date);
+        List<Contracting> contractings = contractingRepository.findByRegistrationDate(date);
         List<ContractingDTO> contractingDTOList = new ArrayList<>();
 
         for (Contracting contracting : contractings){

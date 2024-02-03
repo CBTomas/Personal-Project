@@ -5,12 +5,10 @@ import com.AtomyCompany.AtomycApp.model.Event;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
-import org.jetbrains.annotations.Nullable;
-
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -22,11 +20,11 @@ public class AssistantDTO implements Serializable {
     // DTO parameters
     private Long idAssistant;
     private String assistantName;
-    private int assistantPhone;
+    private String assistantPhone;
     private String assistantEmail;
     private String assistantAddress;
     private int assistantAge;
-    private Date registAssistant;
+    private LocalDate registrationDate;
 
     // Events attended.
     @ToString.Exclude
@@ -44,7 +42,7 @@ public class AssistantDTO implements Serializable {
         assistantDTO.setAssistantEmail(assistant.getAssistantEmail());
         assistantDTO.setAssistantAddress(assistant.getAssistantAddress());
         assistantDTO.setAssistantAge(assistant.getAssistantAge());
-        assistantDTO.setRegistAssistant(assistant.getAssistantRegist());
+        assistantDTO.setRegistrationDate(assistant.getRegistrationDate());
 
         return assistantDTO;
     }
@@ -60,7 +58,7 @@ public class AssistantDTO implements Serializable {
         assistant.setAssistantEmail(assistantDTO.getAssistantEmail());
         assistant.setAssistantAddress(assistantDTO.getAssistantAddress());
         assistant.setAssistantAge(assistantDTO.getAssistantAge());
-        assistant.setAssistantRegist(assistantDTO.getRegistAssistant());
+        assistant.setRegistrationDate(assistantDTO.getRegistrationDate());
 
         return assistant;
     }

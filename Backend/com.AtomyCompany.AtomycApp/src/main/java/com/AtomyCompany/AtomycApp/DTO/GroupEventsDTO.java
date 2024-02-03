@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,7 @@ public class GroupEventsDTO implements Serializable {
 
     private Long groupEventsID;
     private String groupName;
-    private Date registGroup;
+    private LocalDate registrationDate;
 
     @ToString.Exclude
     @JsonIgnore
@@ -31,7 +32,7 @@ public class GroupEventsDTO implements Serializable {
 
         groupEventsDTO.setGroupEventsID(groupEvents.getGroupEventsID());
         groupEventsDTO.setGroupName(groupEvents.getGroupName());
-        groupEventsDTO.setRegistGroup(groupEvents.getRegistGroup());
+        groupEventsDTO.setRegistrationDate(groupEvents.getRegistrationDate());
 
         return groupEventsDTO;
     }
@@ -42,7 +43,7 @@ public class GroupEventsDTO implements Serializable {
 
         groupEvents.setGroupEventsID(groupEventsDTO.getGroupEventsID());
         groupEvents.setGroupName(groupEventsDTO.getGroupName());
-        groupEvents.setRegistGroup(groupEventsDTO.getRegistGroup());
+        groupEvents.setRegistrationDate(groupEventsDTO.getRegistrationDate());
 
         return groupEvents;
     }

@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface GroupEventsRepository extends JpaRepository<GroupEvents, Long> 
 
     List<GroupEvents> findByGroupName(String name);
 
-    List<GroupEvents> findByRegistGroup(Date date);
+    List<GroupEvents> findByRegistrationDate(LocalDate date);
 }

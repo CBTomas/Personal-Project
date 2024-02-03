@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +24,7 @@ public class GroupEvents {
     String groupName;
 
     @Column
-    Date registGroup;
+    LocalDate registrationDate;
 
     // Relations
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "groupEvents")
@@ -36,7 +37,7 @@ public class GroupEvents {
         return "GroupEvents{" +
                 "groupEvents=" + groupEventsID +
                 ", groupName='" + groupName + '\'' +
-                ", registGroup=" + registGroup +
+                ", registGroup=" + registrationDate +
                 '}';
     }
 

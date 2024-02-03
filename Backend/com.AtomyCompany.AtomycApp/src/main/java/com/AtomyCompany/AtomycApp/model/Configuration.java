@@ -12,7 +12,6 @@ public class Configuration {
 
     // Parameters
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String name;
 
     @Column

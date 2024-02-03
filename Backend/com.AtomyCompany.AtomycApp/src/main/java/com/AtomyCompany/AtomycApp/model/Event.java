@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,20 +19,20 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idEvent;
 
-    @Column
+    @Column(name = "name")
     String eventName;
 
-    @Column
-    Date eventDate;
+    @Column(name = "date")
+    LocalDate eventDate;
 
-    @Column
+    @Column(name = "price")
     int eventPrice;
 
-    @Column
+    @Column(name = "assistant_price")
     int assistantPrice;
 
-    @Column
-    Date registEvent;
+    @Column(name = "registration_date")
+    LocalDate registrationDate;
 
     // Relations
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -60,7 +60,7 @@ public class Event {
                 ", eventDate=" + eventDate +
                 ", eventPrice=" + eventPrice +
                 ", assistantPrice=" + assistantPrice +
-                ", registEvent=" + registEvent +
+                ", registEvent=" + registrationDate +
                 '}';
     }
 

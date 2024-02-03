@@ -5,7 +5,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -16,5 +16,5 @@ public interface ContractingRepository extends JpaRepository<Contracting, Long> 
 
     List<Contracting> findByPrice(int price);
 
-    List<Contracting> findByRegistContracting(Date date);
+    List<Contracting> findByRegistrationDate(LocalDate date);
 }

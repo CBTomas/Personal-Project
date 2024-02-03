@@ -3,8 +3,7 @@ import com.AtomyCompany.AtomycApp.model.Assistant;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -13,7 +12,7 @@ public interface AssistantRepository extends JpaRepository<Assistant, Long> {
 
     List<Assistant> findByAssistantName(String name);
 
-    Assistant findByAssistantPhone(int phone);
+    Assistant findByAssistantPhone(String phone);
 
     Assistant findByAssistantEmail(String email);
 
@@ -21,6 +20,6 @@ public interface AssistantRepository extends JpaRepository<Assistant, Long> {
 
     List<Assistant> findByAssistantAge(int age);
 
-    List<Assistant> findByAssistantRegist(Date date);
+    List<Assistant> findByRegistrationDate(LocalDate date);
 
 }

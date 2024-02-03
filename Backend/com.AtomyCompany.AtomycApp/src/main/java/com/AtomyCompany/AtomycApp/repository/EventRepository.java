@@ -5,7 +5,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -14,9 +14,9 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findByEventName(String name);
 
-    List<Event> findByEventDate(Date date);
+    List<Event> findByEventDate(LocalDate date);
 
     List<Event> findByEventPrice(int price);
 
-    List<Event> findByRegistEvent(Date date);
+    List<Event> findByRegistrationDate(LocalDate date);
 }

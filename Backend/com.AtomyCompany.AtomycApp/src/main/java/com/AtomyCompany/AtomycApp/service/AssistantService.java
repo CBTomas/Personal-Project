@@ -2,8 +2,7 @@ package com.AtomyCompany.AtomycApp.service;
 
 import com.AtomyCompany.AtomycApp.DTO.AssistantDTO;
 import jakarta.transaction.Transactional;
-
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Transactional
@@ -17,7 +16,7 @@ public interface AssistantService {
 
     List<AssistantDTO> getAssistantByName(String name);
 
-    AssistantDTO getAssistantByPhone(int phone);
+    AssistantDTO getAssistantByPhone(String phone);
 
     AssistantDTO getAssistantByEmail(String email);
 
@@ -25,7 +24,7 @@ public interface AssistantService {
 
     List<AssistantDTO> getAssistantByAge(int age);
 
-    List<AssistantDTO> getAssistantByRegist(Date date);
+    List<AssistantDTO> getAssistantByRegist(LocalDate date);
 
     void deleteAssistant(Long id);
 }

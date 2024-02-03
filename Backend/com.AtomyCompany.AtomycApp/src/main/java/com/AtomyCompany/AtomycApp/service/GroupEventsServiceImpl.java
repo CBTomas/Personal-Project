@@ -6,6 +6,7 @@ import com.AtomyCompany.AtomycApp.repository.GroupEventsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,9 +54,9 @@ public class GroupEventsServiceImpl implements GroupEventsService{
     }
 
     @Override
-    public List<GroupEventsDTO> getGroupEventsByRegist(Date date) {
+    public List<GroupEventsDTO> getGroupEventsByRegist(LocalDate date) {
 
-        List<GroupEvents> groupEvents = groupEventsRepository.findByRegistGroup(date);
+        List<GroupEvents> groupEvents = groupEventsRepository.findByRegistrationDate(date);
         List<GroupEventsDTO> groupEventsDTOList = new ArrayList<>();
 
         for(GroupEvents groupEvents1 : groupEvents){

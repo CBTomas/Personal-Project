@@ -5,9 +5,8 @@ import com.AtomyCompany.AtomycApp.model.Assistant;
 import com.AtomyCompany.AtomycApp.repository.AssistantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,7 +67,7 @@ public class AssistantServiceImpl implements AssistantService{
     }
 
     @Override
-    public AssistantDTO getAssistantByPhone(int phone) {
+    public AssistantDTO getAssistantByPhone(String phone) {
 
         Assistant assistant = assistantRepository.findByAssistantPhone(phone);
 
@@ -106,9 +105,9 @@ public class AssistantServiceImpl implements AssistantService{
     }
 
     @Override
-    public List<AssistantDTO> getAssistantByRegist(Date date) {
+    public List<AssistantDTO> getAssistantByRegist(LocalDate date) {
 
-        List<Assistant> assistants = assistantRepository.findByAssistantRegist(date);
+        List<Assistant> assistants = assistantRepository.findByRegistrationDate(date);
 
         List<AssistantDTO> assistantDTOList = new ArrayList<>();
 

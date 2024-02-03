@@ -3,8 +3,8 @@ package com.AtomyCompany.AtomycApp.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,7 +22,7 @@ public class Assistant {
     String assistantName;
 
     @Column(name = "phone")
-    int assistantPhone;
+    String assistantPhone;
 
     @Column(name = "email")
     String assistantEmail;
@@ -33,8 +33,8 @@ public class Assistant {
     @Column(name = "age")
     int assistantAge;
 
-    @Column(name = "regist")
-    Date assistantRegist;
+    @Column(name = "registration_date")
+    private LocalDate registrationDate;
 
     // Relations
     @ManyToMany(cascade = {CascadeType.ALL}, mappedBy = "assistantsEvent")
@@ -51,7 +51,7 @@ public class Assistant {
                 ", assistantEmail='" + assistantEmail + '\'' +
                 ", assistantAddress='" + assistantAddress + '\'' +
                 ", assistantAge=" + assistantAge +
-                ", registAssistant=" + assistantRegist +
+                ", registAssistant=" + registrationDate +
                 '}';
     }
 

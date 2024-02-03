@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -57,7 +57,7 @@ public class AssistantController {
     }
 
     @GetMapping("atomycapp/assistant/ph/{assistantPhone}") //Show one Assistant with Phone
-    public ResponseEntity<AssistantDTO> showAssistantsByPhone(@PathVariable int assistantPhone){
+    public ResponseEntity<AssistantDTO> showAssistantsByPhone(@PathVariable String assistantPhone){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         AssistantDTO assistantDTO = assistantService.getAssistantByPhone(assistantPhone);
         if (assistantDTO==null){
@@ -101,7 +101,7 @@ public class AssistantController {
     }
 
     @GetMapping("atomycapp/assistant/rg/{assistantRegist}") //Show All Assistants with x Regist Date
-    public ResponseEntity<List<AssistantDTO>> showAssistantsByDate(@PathVariable Date assistantRegist){
+    public ResponseEntity<List<AssistantDTO>> showAssistantsByDate(@PathVariable LocalDate assistantRegist){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<AssistantDTO> assistantDTOList = assistantService.getAssistantByRegist(assistantRegist);
         if (assistantDTOList==null || assistantDTOList.isEmpty()){
