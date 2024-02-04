@@ -16,4 +16,5 @@ public interface GroupEventsRepository extends JpaRepository<GroupEvents, Long> 
     List<GroupEvents> findByGroupName(String name);
 
     List<GroupEvents> findByRegistrationDate(LocalDate date);
+
 }

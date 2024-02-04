@@ -12,6 +12,8 @@ public interface GroupEventsService {
 
     GroupEventsDTO saveGroupEvents(GroupEventsDTO groupEventsDTO);
 
+    List<GroupEventsDTO> listAllGroupEvents();
+
     GroupEventsDTO getGroupEventsById(Long id);
 
     List<GroupEventsDTO> getGroupEventsByName(String name);

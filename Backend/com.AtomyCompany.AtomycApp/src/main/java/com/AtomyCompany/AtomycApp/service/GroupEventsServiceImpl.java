@@ -28,6 +28,16 @@ public class GroupEventsServiceImpl implements GroupEventsService{
     }
 
     @Override
+    public List<GroupEventsDTO> listAllGroupEvents() {
+        List<GroupEvents> groupEvents = groupEventsRepository.findAll();
+        List<GroupEventsDTO> groupEventsDTOList = new ArrayList<>();
+        for (GroupEvents groupEvent:groupEvents){
+            groupEventsDTOList.add(GroupEventsDTO.convetToDTO(groupEvent));
+        }
+        return groupEventsDTOList;
+    }
+
+    @Override
     public GroupEventsDTO getGroupEventsById(Long id) {
 
         Optional<GroupEvents> groupEvents = groupEventsRepository.findById(id);
