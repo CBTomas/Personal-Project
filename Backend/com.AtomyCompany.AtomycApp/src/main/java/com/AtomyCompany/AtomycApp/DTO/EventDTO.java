@@ -28,11 +28,11 @@ public class EventDTO implements Serializable {
 
     @ToString.Exclude
     @JsonIgnore
-    private List<Assistant> assistantsEvent = new ArrayList<>();
+    private List<AssistantDTO> assistantsEvent = new ArrayList<>();
 
     @ToString.Exclude
     @JsonIgnore
-    private List<Contracting> contractions = new ArrayList<>();
+    private List<ContractingDTO> contractions = new ArrayList<>();
 
     @ToString.Exclude
     @JsonIgnore

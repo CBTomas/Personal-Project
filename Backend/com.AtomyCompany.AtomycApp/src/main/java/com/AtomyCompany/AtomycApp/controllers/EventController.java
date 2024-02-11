@@ -2,6 +2,7 @@ package com.AtomyCompany.AtomycApp.controllers;
 
 import com.AtomyCompany.AtomycApp.Application;
 import com.AtomyCompany.AtomycApp.DTO.EventDTO;
+import com.AtomyCompany.AtomycApp.service.AssistantService;
 import com.AtomyCompany.AtomycApp.service.EventService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 public class EventController {
@@ -25,6 +25,9 @@ public class EventController {
 
     @Autowired
     EventService eventService;
+
+    @Autowired
+    AssistantService assistantService;
 
     @GetMapping("atomycapp/event")
     public ResponseEntity<List<EventDTO>> listEvents(){
@@ -111,6 +114,14 @@ public class EventController {
             EventDTO eventUPD = eventService.saveEvent(eventDTO);
             return new ResponseEntity<>(eventUPD,HttpStatus.OK);
         }
+    }
+
+    @PutMapping("atomycapp/event/AssEv/{idAssistant}/{idEvent}")
+    public String addAssistantToEvent(
+        @PathVariable Long idAssistant,
+        @PathVariable Long idEvent){
+        myLog.info(context.getMethod() + " from " + context.getRemoteHost());
+        return eventService.addAssistantToEvent(idAssistant,idEvent);
     }
 
     @DeleteMapping("atomycapp/event/{idEvent}")

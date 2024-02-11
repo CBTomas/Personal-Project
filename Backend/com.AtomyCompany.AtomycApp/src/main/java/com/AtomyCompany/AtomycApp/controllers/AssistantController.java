@@ -1,6 +1,7 @@
 package com.AtomyCompany.AtomycApp.controllers;
 import com.AtomyCompany.AtomycApp.Application;
 import com.AtomyCompany.AtomycApp.DTO.AssistantDTO;
+import com.AtomyCompany.AtomycApp.DTO.EventDTO;
 import com.AtomyCompany.AtomycApp.service.AssistantService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -136,5 +137,16 @@ public class AssistantController {
         myLog.info(context.getMethod() + context.getRequestURI());
         assistantService.deleteAssistant(idAssistant);
         return new ResponseEntity<>("The assistant has been eliminated", HttpStatus.OK);
+    }
+
+    @GetMapping("atomycapp/assistant/events/{idAssistant}")
+    public ResponseEntity<List<EventDTO>> getEventsByAssistant(@PathVariable Long idAssistant){
+        myLog.info(context.getMethod() + " from " + context.getRemoteHost());
+        List<EventDTO> eventDTOList = assistantService.getEventsByAssistant(idAssistant);
+        if (eventDTOList==null || eventDTOList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }else{
+            return new ResponseEntity<>(eventDTOList,HttpStatus.OK);
+        }
     }
 }

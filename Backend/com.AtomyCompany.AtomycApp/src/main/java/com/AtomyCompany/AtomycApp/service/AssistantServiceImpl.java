@@ -1,7 +1,9 @@
 package com.AtomyCompany.AtomycApp.service;
 
 import com.AtomyCompany.AtomycApp.DTO.AssistantDTO;
+import com.AtomyCompany.AtomycApp.DTO.EventDTO;
 import com.AtomyCompany.AtomycApp.model.Assistant;
+import com.AtomyCompany.AtomycApp.model.Event;
 import com.AtomyCompany.AtomycApp.repository.AssistantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -117,5 +119,19 @@ public class AssistantServiceImpl implements AssistantService{
     @Override
     public void deleteAssistant(Long id) {
         assistantRepository.deleteById(id);
+    }
+
+    @Override
+    public List<EventDTO> getEventsByAssistant(Long idAssistant) {
+
+        List<Event> events = assistantRepository.getEventByAssistant(idAssistant);
+
+        List<EventDTO> eventDTOList = new ArrayList<>();
+
+        for (Event event: events){
+            eventDTOList.add(EventDTO.convertToDTO(event,null));
+        }
+
+        return eventDTOList;
     }
 }

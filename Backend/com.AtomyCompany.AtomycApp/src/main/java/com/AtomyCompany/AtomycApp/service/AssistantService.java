@@ -1,6 +1,7 @@
 package com.AtomyCompany.AtomycApp.service;
 
 import com.AtomyCompany.AtomycApp.DTO.AssistantDTO;
+import com.AtomyCompany.AtomycApp.DTO.EventDTO;
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface AssistantService {
     List<AssistantDTO> getAssistantByRegist(LocalDate date);
 
     void deleteAssistant(Long id);
+
+    List<EventDTO> getEventsByAssistant(Long idAssistant);
 }

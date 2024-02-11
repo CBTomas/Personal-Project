@@ -32,7 +32,7 @@ public class Contracting {
     @ManyToOne
     @JoinColumn(name = "contractions")
     @ToString.Exclude
-    Event eventContracting;
+    private Event eventContracting;
 
     // Functions
     @Override

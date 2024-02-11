@@ -29,7 +29,7 @@ public class AssistantDTO implements Serializable {
     // Events attended.
     @ToString.Exclude
     @JsonIgnore
-    private List<Event> eventAssist = new ArrayList<>();
+    private List<EventDTO> eventAssist = new ArrayList<>();
 
     // Function that converts the object entity to dto
     public static AssistantDTO convertToDTO(Assistant assistant){
