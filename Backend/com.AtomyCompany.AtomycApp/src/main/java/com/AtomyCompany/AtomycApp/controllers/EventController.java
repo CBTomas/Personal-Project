@@ -1,7 +1,9 @@
 package com.AtomyCompany.AtomycApp.controllers;
 
 import com.AtomyCompany.AtomycApp.Application;
+import com.AtomyCompany.AtomycApp.DTO.ContractingDTO;
 import com.AtomyCompany.AtomycApp.DTO.EventDTO;
+import com.AtomyCompany.AtomycApp.model.Contracting;
 import com.AtomyCompany.AtomycApp.service.AssistantService;
 import com.AtomyCompany.AtomycApp.service.EventService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -124,10 +126,27 @@ public class EventController {
         return eventService.addAssistantToEvent(idAssistant,idEvent);
     }
 
+    @PutMapping("atomycapp/event/ConEv/{idEvent}/{idContracting}")
+    public String addContractingToEvent(@PathVariable Long idEvent, @PathVariable Long idContracting){
+        myLog.info(context.getMethod() + " from " + context.getRemoteHost());
+        return eventService.addContractingToEvent(idEvent,idContracting);
+    }
+
     @DeleteMapping("atomycapp/event/{idEvent}")
     public ResponseEntity<String> deleteEvent(@PathVariable Long idEvent){
         myLog.info(context.getMethod() + context.getRequestURI());
         eventService.deleteEvent(idEvent);
         return new ResponseEntity<>("The event has been eliminated",HttpStatus.OK);
+    }
+
+    @GetMapping("atomycapp/event/hiring/{idEvent}")
+    public ResponseEntity<List<ContractingDTO>> getContractingsByEvent(@PathVariable Long idEvent){
+        myLog.info(context.getMethod() + " from " + context.getRemoteHost());
+        List<ContractingDTO> contractingDTOList = eventService.getContractingsByEvent(idEvent);
+        if (contractingDTOList==null || contractingDTOList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }else{
+            return new ResponseEntity<>(contractingDTOList,HttpStatus.OK);
+        }
     }
 }

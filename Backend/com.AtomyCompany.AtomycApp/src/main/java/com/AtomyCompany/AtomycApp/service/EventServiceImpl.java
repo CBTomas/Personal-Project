@@ -1,9 +1,12 @@
 package com.AtomyCompany.AtomycApp.service;
 
+import com.AtomyCompany.AtomycApp.DTO.ContractingDTO;
 import com.AtomyCompany.AtomycApp.DTO.EventDTO;
 import com.AtomyCompany.AtomycApp.model.Assistant;
+import com.AtomyCompany.AtomycApp.model.Contracting;
 import com.AtomyCompany.AtomycApp.model.Event;
 import com.AtomyCompany.AtomycApp.repository.AssistantRepository;
+import com.AtomyCompany.AtomycApp.repository.ContractingRepository;
 import com.AtomyCompany.AtomycApp.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,8 @@ public class EventServiceImpl implements EventService{
     private EventRepository eventRepository;
     @Autowired
     private AssistantRepository assistantRepository;
+    @Autowired
+    private ContractingRepository contractingRepository;
 
 
     @Override
@@ -119,6 +124,35 @@ public class EventServiceImpl implements EventService{
             eventRepository.save(event);
             return "Attendee has been saved in the event";
         }
+    }
+
+    @Override
+    public String addContractingToEvent(Long idEvent, Long idContracting) {
+        Contracting contracting = contractingRepository.findById(idContracting).orElse(null);
+        Event event = eventRepository.findById(idEvent).orElse(null);
+        if (event==null || contracting==null){
+            return "Assistant or Event not exists.";
+        }else{
+            event.getContractions().add(contracting);
+            contracting.setEventContracting(event);
+            eventRepository.save(event);
+            contractingRepository.save(contracting);
+            return "Hiring added to the event";
+        }
+    }
+
+    @Override
+    public List<ContractingDTO> getContractingsByEvent(Long idEvent) {
+
+        List<Contracting> contractings = eventRepository.getContractingsByEvent(idEvent);
+
+        List<ContractingDTO> contractingDTOList = new ArrayList<>();
+
+        for(Contracting contracting: contractings){
+            contractingDTOList.add(ContractingDTO.convertToDTO(contracting,null));
+        }
+
+        return contractingDTOList;
     }
 
     @Override
