@@ -1,0 +1,1 @@
+/Backend/com.AtomyCompany.AtomycApp/src/main/resources/application.properties
