@@ -23,7 +23,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findByRegistrationDate(LocalDate date);
 
-    @Query("Select ev.contractions from Events ev where ev.idEvent = :idEv")
-    public List<Contracting> getContractingsByEvent(@Param("idEv") Long idEv);
+    @Query("Select ev.contractions from Event ev where ev.idEvent = :idEv")
+    public List<Contracting> getContractingByEvent(@Param("idEv") Long idEv);
 
 }

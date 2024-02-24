@@ -144,7 +144,7 @@ public class EventServiceImpl implements EventService{
     @Override
     public List<ContractingDTO> getContractingsByEvent(Long idEvent) {
 
-        List<Contracting> contractings = eventRepository.getContractingsByEvent(idEvent);
+        List<Contracting> contractings = eventRepository.getContractingByEvent(idEvent);
 
         List<ContractingDTO> contractingDTOList = new ArrayList<>();
 

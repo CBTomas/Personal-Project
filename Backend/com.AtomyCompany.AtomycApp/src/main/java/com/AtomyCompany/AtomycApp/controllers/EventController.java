@@ -118,10 +118,17 @@ public class EventController {
         }
     }
 
+    @DeleteMapping("atomycapp/event/{idEvent}")
+    public ResponseEntity<String> deleteEvent(@PathVariable Long idEvent){
+        myLog.info(context.getMethod() + context.getRequestURI());
+        eventService.deleteEvent(idEvent);
+        return new ResponseEntity<>("The event has been eliminated",HttpStatus.OK);
+    }
+
     @PutMapping("atomycapp/event/AssEv/{idAssistant}/{idEvent}")
     public String addAssistantToEvent(
-        @PathVariable Long idAssistant,
-        @PathVariable Long idEvent){
+            @PathVariable Long idAssistant,
+            @PathVariable Long idEvent){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         return eventService.addAssistantToEvent(idAssistant,idEvent);
     }
@@ -130,13 +137,6 @@ public class EventController {
     public String addContractingToEvent(@PathVariable Long idEvent, @PathVariable Long idContracting){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         return eventService.addContractingToEvent(idEvent,idContracting);
-    }
-
-    @DeleteMapping("atomycapp/event/{idEvent}")
-    public ResponseEntity<String> deleteEvent(@PathVariable Long idEvent){
-        myLog.info(context.getMethod() + context.getRequestURI());
-        eventService.deleteEvent(idEvent);
-        return new ResponseEntity<>("The event has been eliminated",HttpStatus.OK);
     }
 
     @GetMapping("atomycapp/event/hiring/{idEvent}")
