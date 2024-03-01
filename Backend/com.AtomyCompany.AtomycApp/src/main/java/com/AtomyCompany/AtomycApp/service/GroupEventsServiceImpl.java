@@ -1,7 +1,10 @@
 package com.AtomyCompany.AtomycApp.service;
 
+import com.AtomyCompany.AtomycApp.DTO.EventDTO;
 import com.AtomyCompany.AtomycApp.DTO.GroupEventsDTO;
+import com.AtomyCompany.AtomycApp.model.Event;
 import com.AtomyCompany.AtomycApp.model.GroupEvents;
+import com.AtomyCompany.AtomycApp.repository.EventRepository;
 import com.AtomyCompany.AtomycApp.repository.GroupEventsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,8 @@ import java.util.Optional;
 public class GroupEventsServiceImpl implements GroupEventsService{
     @Autowired
     GroupEventsRepository groupEventsRepository;
+    @Autowired
+    EventRepository eventRepository;
 
     @Override
     public GroupEventsDTO saveGroupEvents(GroupEventsDTO groupEventsDTO) {
@@ -79,5 +84,34 @@ public class GroupEventsServiceImpl implements GroupEventsService{
     @Override
     public void deleteGroupEvents(Long id) {
         groupEventsRepository.deleteById(id);
+    }
+
+    @Override
+    public String addEventToGroupEvents(Long idGroupEvents, Long idEvent) {
+        GroupEvents groupEvents = groupEventsRepository.findById(idGroupEvents).orElse(null);
+        Event event = eventRepository.findById(idEvent).orElse(null);
+        if (event==null || groupEvents==null){
+            return "GroupEvent or Event not exists.";
+        }else{
+            groupEvents.getEvents().add(event);
+            event.setGroupEvents(groupEvents);
+            groupEventsRepository.save(groupEvents);
+            eventRepository.save(event);
+            return "Event edded to GroupEvents";
+        }
+    }
+
+    @Override
+    public List<EventDTO> getEventsByGroupEvents(Long idGroupEvents) {
+
+        List<Event> events = groupEventsRepository.getEventsByGroupEvents(idGroupEvents);
+
+        List<EventDTO> eventDTOList = new ArrayList<>();
+
+        for (Event event: events){
+            eventDTOList.add(EventDTO.convertToDTO(event,null));
+        }
+
+        return eventDTOList;
     }
 }

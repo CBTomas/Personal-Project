@@ -1,5 +1,6 @@
 package com.AtomyCompany.AtomycApp.service;
 
+import com.AtomyCompany.AtomycApp.DTO.EventDTO;
 import com.AtomyCompany.AtomycApp.DTO.GroupEventsDTO;
 import jakarta.transaction.Transactional;
 
@@ -22,4 +23,7 @@ public interface GroupEventsService {
 
     void deleteGroupEvents(Long id);
 
+    String addEventToGroupEvents(Long idGroupEvents, Long idEvent);
+
+    List<EventDTO> getEventsByGroupEvents(Long idGroupEvents);
 }

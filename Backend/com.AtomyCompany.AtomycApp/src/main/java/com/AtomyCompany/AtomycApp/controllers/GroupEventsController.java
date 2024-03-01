@@ -1,6 +1,7 @@
 package com.AtomyCompany.AtomycApp.controllers;
 
 import com.AtomyCompany.AtomycApp.Application;
+import com.AtomyCompany.AtomycApp.DTO.EventDTO;
 import com.AtomyCompany.AtomycApp.DTO.GroupEventsDTO;
 import com.AtomyCompany.AtomycApp.service.GroupEventsService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -92,5 +93,22 @@ public class GroupEventsController {
         myLog.info(context.getMethod() + context.getRequestURI());
         groupEventsService.deleteGroupEvents(idGroupEvents);
         return new ResponseEntity<>("The GroupEvents has been eliminated",HttpStatus.OK);
+    }
+
+    @PutMapping("atomycapp/groupevents/GrpEv/{idGroupEvents}/{idEvent}")
+    public String addEventToGroupEvents(@PathVariable Long idGroupEvents, @PathVariable Long idEvent){
+        myLog.info(context.getMethod() + " from " + context.getRemoteHost());
+        return groupEventsService.addEventToGroupEvents(idGroupEvents, idEvent);
+    }
+
+    @GetMapping("atomycapp/groupevents/event/{idGroupEvents}")
+    public ResponseEntity<List<EventDTO>> getEventsByGroupEvents(@PathVariable Long idGroupEvents){
+        myLog.info(context.getMethod() + " from " + context.getRemoteHost());
+        List<EventDTO> eventDTOList = groupEventsService.getEventsByGroupEvents(idGroupEvents);
+        if (eventDTOList==null || eventDTOList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }else{
+            return new ResponseEntity<>(eventDTOList,HttpStatus.OK);
+        }
     }
 }
