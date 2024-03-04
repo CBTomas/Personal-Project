@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
+@RequestMapping("atomycapp")
 public class AssistantController {
 
     private static final Logger myLog= LoggerFactory.getLogger(Application.class);
@@ -24,7 +25,7 @@ public class AssistantController {
     AssistantService assistantService;
 
 
-    @GetMapping("atomycapp/assistant") // Show All Assistants
+    @GetMapping("/assistant") // Show All Assistants
     public ResponseEntity<List<AssistantDTO>> listAssistants(){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<AssistantDTO> assistantDTOList = assistantService.listAllAssistants();
@@ -35,7 +36,7 @@ public class AssistantController {
         }
     }
 
-    @GetMapping("atomycapp/assistant/{idAssistant}") //Show one Assistant with ID
+    @GetMapping("/assistant/{idAssistant}") //Show one Assistant with ID
     public ResponseEntity<AssistantDTO> showAssistantById(@PathVariable Long idAssistant){
         myLog.info(context.getMethod() + context.getRequestURI() + " from " + context.getRemoteHost());
         AssistantDTO assistantDTO = assistantService.getAssistantById(idAssistant);
@@ -46,7 +47,7 @@ public class AssistantController {
         }
     }
 
-    @GetMapping("atomycapp/assistant/nm/{assistantName}") //Show All Assistants with x Name
+    @GetMapping("/assistant/nm/{assistantName}") //Show All Assistants with x Name
     public ResponseEntity<List<AssistantDTO>> showAssistantsByName(@PathVariable String assistantName){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<AssistantDTO> assistantDTOList = assistantService.getAssistantByName(assistantName);
@@ -57,7 +58,7 @@ public class AssistantController {
         }
     }
 
-    @GetMapping("atomycapp/assistant/ph/{assistantPhone}") //Show one Assistant with Phone
+    @GetMapping("/assistant/ph/{assistantPhone}") //Show one Assistant with Phone
     public ResponseEntity<AssistantDTO> showAssistantsByPhone(@PathVariable String assistantPhone){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         AssistantDTO assistantDTO = assistantService.getAssistantByPhone(assistantPhone);
@@ -68,7 +69,7 @@ public class AssistantController {
         }
     }
 
-    @GetMapping("atomycapp/assistant/em/{assistantEmail}") //Show one Assistant with Email
+    @GetMapping("/assistant/em/{assistantEmail}") //Show one Assistant with Email
     public ResponseEntity<AssistantDTO> showAssistantsByEmail(@PathVariable String assistantEmail){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         AssistantDTO assistantDTO = assistantService.getAssistantByEmail(assistantEmail);
@@ -79,7 +80,7 @@ public class AssistantController {
         }
     }
 
-    @GetMapping("atomycapp/assistant/add/{assistantAddress}") //Show one Assistant with Address
+    @GetMapping("/assistant/add/{assistantAddress}") //Show one Assistant with Address
     public ResponseEntity<AssistantDTO> showAssistantsByAddress(@PathVariable String assistantAddress){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         AssistantDTO assistantDTO = assistantService.getAssistantByAddress(assistantAddress);
@@ -90,7 +91,7 @@ public class AssistantController {
         }
     }
 
-    @GetMapping("atomycapp/assistant/age/{assistantAge}") //Show All Assistants with x Age
+    @GetMapping("/assistant/age/{assistantAge}") //Show All Assistants with x Age
     public ResponseEntity<List<AssistantDTO>> showAssistantsByAge(@PathVariable int assistantAge){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<AssistantDTO> assistantDTOList = assistantService.getAssistantByAge(assistantAge);
@@ -101,7 +102,7 @@ public class AssistantController {
         }
     }
 
-    @GetMapping("atomycapp/assistant/rg/{assistantRegist}") //Show All Assistants with x Regist Date
+    @GetMapping("/assistant/rg/{assistantRegist}") //Show All Assistants with x Regist Date
     public ResponseEntity<List<AssistantDTO>> showAssistantsByDate(@PathVariable LocalDate assistantRegist){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<AssistantDTO> assistantDTOList = assistantService.getAssistantByRegist(assistantRegist);
@@ -111,7 +112,7 @@ public class AssistantController {
             return new ResponseEntity<>(assistantDTOList,HttpStatus.OK);
         }
     }
-    @PostMapping("atomycapp/assistant")
+    @PostMapping("/assistant")
     public ResponseEntity<AssistantDTO> addAssistant(@RequestBody AssistantDTO assistantDTO){
         myLog.info(context.getMethod() + context.getRequestURI());
         AssistantDTO assistantSaved = assistantService.saveAssistant(assistantDTO);
@@ -121,7 +122,7 @@ public class AssistantController {
             return new ResponseEntity<>(assistantSaved,HttpStatus.OK);
         }
     }
-    @PutMapping("atomycapp/assistant")
+    @PutMapping("/assistant")
     public ResponseEntity<AssistantDTO> updateAssistant(@RequestBody AssistantDTO assistantDTO){
         myLog.info(context.getMethod() + context.getRequestURI());
         AssistantDTO assistantSaved = assistantService.getAssistantById(assistantDTO.getIdAssistant());
@@ -132,14 +133,14 @@ public class AssistantController {
             return new ResponseEntity<>(assistantUPD,HttpStatus.OK);
         }
     }
-    @DeleteMapping("atomycapp/assistant/{idAssistant}")
+    @DeleteMapping("/assistant/{idAssistant}")
     public ResponseEntity<String> deleteAssistant(@PathVariable Long idAssistant){
         myLog.info(context.getMethod() + context.getRequestURI());
         assistantService.deleteAssistant(idAssistant);
         return new ResponseEntity<>("The assistant has been eliminated", HttpStatus.OK);
     }
 
-    @GetMapping("atomycapp/assistant/events/{idAssistant}")
+    @GetMapping("/assistant/events/{idAssistant}")
     public ResponseEntity<List<EventDTO>> getEventsByAssistant(@PathVariable Long idAssistant){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<EventDTO> eventDTOList = assistantService.getEventsByAssistant(idAssistant);

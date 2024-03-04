@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("atomycapp")
 public class ConfigurationController {
 
     private static final Logger myLog= LoggerFactory.getLogger(Application.class);
@@ -23,7 +24,7 @@ public class ConfigurationController {
     @Autowired
     ConfigurationService configurationService;
 
-    @GetMapping("atomycapp/configuration/{idConfiguration}")
+    @GetMapping("/configuration/{idConfiguration}")
     public ResponseEntity<ConfigurationDTO> showConfigurationById(@PathVariable String idConfiguration){
         myLog.info(context.getMethod() + context.getRequestURI() + " from " + context.getRemoteHost());
         ConfigurationDTO configurationDTO = configurationService.getConfigurationById(idConfiguration);
@@ -34,7 +35,7 @@ public class ConfigurationController {
         }
     }
 
-    @GetMapping("atomycapp/configurations")
+    @GetMapping("/configurations")
     public ResponseEntity<List<ConfigurationDTO>> listConfiguration(){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<ConfigurationDTO> configurationDTOList = configurationService.listAllConfigurations();
@@ -45,7 +46,7 @@ public class ConfigurationController {
         }
     }
 
-    @PostMapping("atomycapp/configuration")
+    @PostMapping("/configuration")
     public ResponseEntity<ConfigurationDTO> addConfiguration(@RequestBody ConfigurationDTO configurationDTO){
         myLog.info(context.getMethod() + context.getRequestURI());
 
@@ -57,7 +58,7 @@ public class ConfigurationController {
         }
     }
 
-    @PutMapping("atomycapp/configuration")
+    @PutMapping("/configuration")
     public ResponseEntity<ConfigurationDTO> updateConfiguiration(@RequestBody ConfigurationDTO configurationUpd){
         myLog.info(context.getMethod() + context.getRequestURI());
         ConfigurationDTO configurationSaved = configurationService.getConfigurationById(configurationUpd.getName());
@@ -69,7 +70,7 @@ public class ConfigurationController {
         }
     }
 
-    @DeleteMapping("atomycapp/configuration/{idConfiguration}")
+    @DeleteMapping("/configuration/{idConfiguration}")
     public ResponseEntity<String> deleteConfiguration(@PathVariable String idConfiguration){
         myLog.info(context.getMethod() + context.getRequestURI());
         configurationService.deleteConfiguration(idConfiguration);

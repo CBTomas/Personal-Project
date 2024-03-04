@@ -3,7 +3,6 @@ package com.AtomyCompany.AtomycApp.controllers;
 import com.AtomyCompany.AtomycApp.Application;
 import com.AtomyCompany.AtomycApp.DTO.ContractingDTO;
 import com.AtomyCompany.AtomycApp.DTO.EventDTO;
-import com.AtomyCompany.AtomycApp.model.Contracting;
 import com.AtomyCompany.AtomycApp.service.AssistantService;
 import com.AtomyCompany.AtomycApp.service.EventService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,11 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
 @RestController
+@RequestMapping("atomycapp")
 public class EventController {
 
     private static final Logger myLog= LoggerFactory.getLogger(Application.class);
@@ -31,7 +30,7 @@ public class EventController {
     @Autowired
     AssistantService assistantService;
 
-    @GetMapping("atomycapp/event")
+    @GetMapping("/event")
     public ResponseEntity<List<EventDTO>> listEvents(){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<EventDTO> eventDTOList = eventService.listAllEvents();
@@ -42,7 +41,7 @@ public class EventController {
         }
     }
 
-    @GetMapping("atomycapp/event/{idEvent}")
+    @GetMapping("/event/{idEvent}")
     public ResponseEntity<EventDTO> showEventById(@PathVariable Long idEvent){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         EventDTO eventDTO = eventService.getEventById(idEvent);
@@ -53,7 +52,7 @@ public class EventController {
         }
     }
 
-    @GetMapping("atomycapp/event/nm/{eventName}")
+    @GetMapping("/event/nm/{eventName}")
     public ResponseEntity<List<EventDTO>> showEventsByName(@PathVariable String eventName){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<EventDTO> events = eventService.getEventByName(eventName);
@@ -63,7 +62,7 @@ public class EventController {
             return new ResponseEntity<>(events,HttpStatus.OK);
         }
     }
-    @GetMapping("atomycapp/event/dt/{date}")
+    @GetMapping("/event/dt/{date}")
     public ResponseEntity<List<EventDTO>> showEventsByDate(@PathVariable LocalDate date){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<EventDTO> events = eventService.getEventByDate(date);
@@ -74,7 +73,7 @@ public class EventController {
         }
     }
 
-    @GetMapping("atomycapp/event/prc/{price}")
+    @GetMapping("/event/prc/{price}")
     public ResponseEntity<List<EventDTO>> showEventsByPrice(@PathVariable int price){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<EventDTO> events = eventService.getEventByPrice(price);
@@ -85,7 +84,7 @@ public class EventController {
         }
     }
 
-    @GetMapping("atomycapp/event/rgst/{date}")
+    @GetMapping("/event/rgst/{date}")
     public ResponseEntity<List<EventDTO>> showEventsByRegist(@PathVariable LocalDate date){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<EventDTO> events = eventService.getEventByRegist(date);
@@ -95,7 +94,7 @@ public class EventController {
             return new ResponseEntity<>(events,HttpStatus.OK);
         }
     }
-    @PostMapping("atomycapp/event")
+    @PostMapping("/event")
     public ResponseEntity<EventDTO> addEvent(@RequestBody EventDTO eventDTO){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         EventDTO eventSaved = eventService.saveEvent(eventDTO);
@@ -106,7 +105,7 @@ public class EventController {
         }
     }
 
-    @PutMapping("atomycapp/event")
+    @PutMapping("/event")
     public ResponseEntity<EventDTO> updateEvent(@RequestBody EventDTO eventDTO){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         EventDTO eventSaved = eventService.getEventById(eventDTO.getIdEvent());
@@ -118,14 +117,14 @@ public class EventController {
         }
     }
 
-    @DeleteMapping("atomycapp/event/{idEvent}")
+    @DeleteMapping("/event/{idEvent}")
     public ResponseEntity<String> deleteEvent(@PathVariable Long idEvent){
         myLog.info(context.getMethod() + context.getRequestURI());
         eventService.deleteEvent(idEvent);
         return new ResponseEntity<>("The event has been eliminated",HttpStatus.OK);
     }
 
-    @PutMapping("atomycapp/event/AssEv/{idAssistant}/{idEvent}")
+    @PutMapping("/event/AssEv/{idAssistant}/{idEvent}")
     public String addAssistantToEvent(
             @PathVariable Long idAssistant,
             @PathVariable Long idEvent){
@@ -133,13 +132,13 @@ public class EventController {
         return eventService.addAssistantToEvent(idAssistant,idEvent);
     }
 
-    @PutMapping("atomycapp/event/ConEv/{idEvent}/{idContracting}")
+    @PutMapping("/event/ConEv/{idEvent}/{idContracting}")
     public String addContractingToEvent(@PathVariable Long idEvent, @PathVariable Long idContracting){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         return eventService.addContractingToEvent(idEvent,idContracting);
     }
 
-    @GetMapping("atomycapp/event/hiring/{idEvent}")
+    @GetMapping("/event/hiring/{idEvent}")
     public ResponseEntity<List<ContractingDTO>> getContractingsByEvent(@PathVariable Long idEvent){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<ContractingDTO> contractingDTOList = eventService.getContractingsByEvent(idEvent);

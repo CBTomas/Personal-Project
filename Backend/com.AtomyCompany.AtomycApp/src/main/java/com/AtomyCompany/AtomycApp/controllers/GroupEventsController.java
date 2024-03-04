@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
 @RestController
+@RequestMapping("atomycapp")
 public class GroupEventsController {
 
     private static final Logger myLog= LoggerFactory.getLogger(Application.class);
@@ -25,7 +25,7 @@ public class GroupEventsController {
 
     @Autowired
     GroupEventsService groupEventsService;
-    @GetMapping("atomycapp/groupevents")
+    @GetMapping("/groupevents")
     public ResponseEntity<List<GroupEventsDTO>> listGroupEvents(){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<GroupEventsDTO> groupEventsDTOList = groupEventsService.listAllGroupEvents();
@@ -35,7 +35,7 @@ public class GroupEventsController {
             return new ResponseEntity<>(groupEventsDTOList,HttpStatus.OK);
         }
     }
-    @GetMapping("atomycapp/groupevents/{idGroupEvents}")
+    @GetMapping("/groupevents/{idGroupEvents}")
     public ResponseEntity<GroupEventsDTO> showGroupEventsById(@PathVariable Long idGroupEvents){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         GroupEventsDTO groupEventsDTO = groupEventsService.getGroupEventsById(idGroupEvents);
@@ -45,7 +45,7 @@ public class GroupEventsController {
             return new ResponseEntity<>(groupEventsDTO,HttpStatus.OK);
         }
     }
-    @GetMapping("atomycapp/groupevents/nm/{name}")
+    @GetMapping("/groupevents/nm/{name}")
     public ResponseEntity<List<GroupEventsDTO>> showGroupEventsByName(@PathVariable String name){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<GroupEventsDTO> groupEventsDTO = groupEventsService.getGroupEventsByName(name);
@@ -56,7 +56,7 @@ public class GroupEventsController {
         }
     }
 
-    @GetMapping("atomycapp/groupevents/rgst/{date}")
+    @GetMapping("/groupevents/rgst/{date}")
     public ResponseEntity<List<GroupEventsDTO>> showGroupEventsByRegist(@PathVariable LocalDate date){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<GroupEventsDTO> groupEventsDTO = groupEventsService.getGroupEventsByRegist(date);
@@ -66,7 +66,7 @@ public class GroupEventsController {
             return new ResponseEntity<>(groupEventsDTO,HttpStatus.OK);
         }
     }
-    @PostMapping("atomycapp/groupevents")
+    @PostMapping("/groupevents")
     public ResponseEntity<GroupEventsDTO> addGroupEvents(@RequestBody GroupEventsDTO groupEventsDTO){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         GroupEventsDTO groupEventsSaved = groupEventsService.saveGroupEvents(groupEventsDTO);
@@ -76,7 +76,7 @@ public class GroupEventsController {
             return new ResponseEntity<>(groupEventsSaved,HttpStatus.OK);
         }
     }
-    @PutMapping("atomycapp/groupevents")
+    @PutMapping("/groupevents")
     public ResponseEntity<GroupEventsDTO> updateGroupEvents(@RequestBody GroupEventsDTO groupEventsDTO){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         GroupEventsDTO groupEventsSaved = groupEventsService.getGroupEventsById(groupEventsDTO.getGroupEventsID());
@@ -88,7 +88,7 @@ public class GroupEventsController {
         }
     }
 
-    @DeleteMapping("atomycapp/groupevents/{idGroupEvents}")
+    @DeleteMapping("/groupevents/{idGroupEvents}")
     public ResponseEntity<String> deleteGroupEvents(@PathVariable Long idGroupEvents){
         myLog.info(context.getMethod() + context.getRequestURI());
         groupEventsService.deleteGroupEvents(idGroupEvents);
