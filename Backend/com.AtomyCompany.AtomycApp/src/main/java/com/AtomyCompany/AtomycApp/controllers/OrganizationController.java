@@ -21,7 +21,7 @@ public class OrganizationController {
     @Autowired
     private OrganizationService organizationService;
 
-    @GetMapping("atomycapp/organization/{idOrganization}")
+    @GetMapping("/organization/{idOrganization}")
     public ResponseEntity<OrganizationDTO> showOrganizationById(@PathVariable String idOrganization){
         myLog.info(context.getMethod() + context.getRequestURI() + " from " + context.getRemoteHost());
         OrganizationDTO organizationDTO =organizationService.getOrganizationById(idOrganization);
@@ -32,7 +32,7 @@ public class OrganizationController {
         }
     }
 
-    @PostMapping("atomycapp/organization")
+    @PostMapping("/organization")
     public ResponseEntity<OrganizationDTO> addOrganitation(@RequestBody OrganizationDTO organizationDTO){
         myLog.info(context.getMethod() + context.getRequestURI());
 
@@ -45,7 +45,7 @@ public class OrganizationController {
     }
 
 
-    @PutMapping("atomycapp/organization")
+    @PutMapping("/organization")
     public ResponseEntity<OrganizationDTO> updateOrganization(@RequestBody OrganizationDTO updOrganization){
         myLog.info(context.getMethod() + context.getRequestURI());
         OrganizationDTO organizationDTO = organizationService.getOrganizationById(updOrganization.getName());
@@ -57,7 +57,7 @@ public class OrganizationController {
         }
     }
 
-    @DeleteMapping("atomycapp/organization/{idOrganization}")
+    @DeleteMapping("/organization/{idOrganization}")
     public ResponseEntity<String> deleteOrganization(@PathVariable String idOrganization){
         organizationService.deleteOrganization(idOrganization);
         return new ResponseEntity<>("The organization has been eliminated", HttpStatus.OK);

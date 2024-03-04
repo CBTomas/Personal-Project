@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
+@RequestMapping("atomycapp")
 public class ContractingController {
     private static final Logger myLog= LoggerFactory.getLogger(Application.class);
     @Autowired
@@ -21,7 +22,7 @@ public class ContractingController {
     @Autowired
     ContractingService contractingService;
 
-    @GetMapping("atomycapp/contracting")
+    @GetMapping("/contracting")
     public ResponseEntity<List<ContractingDTO>> listContractings(){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<ContractingDTO> contractingDTOList = contractingService.listAllContractings();
@@ -32,7 +33,7 @@ public class ContractingController {
         }
     }
 
-    @GetMapping("atomycapp/contracting/{idContracting}")
+    @GetMapping("/contracting/{idContracting}")
     public ResponseEntity<ContractingDTO> showContractingById(@PathVariable Long idContracting){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         ContractingDTO contractingDTO = contractingService.getContractingById(idContracting);
@@ -42,7 +43,7 @@ public class ContractingController {
             return new ResponseEntity<>(contractingDTO,HttpStatus.OK);
         }
     }
-    @GetMapping("atomycapp/contracting/nm/{name}")
+    @GetMapping("/contracting/nm/{name}")
     public ResponseEntity<List<ContractingDTO>> showContractingByName(@PathVariable String name){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<ContractingDTO> contractingDTOList = contractingService.getContractingByName(name);
@@ -53,7 +54,7 @@ public class ContractingController {
         }
     }
 
-    @GetMapping("atomycapp/contracting/prc/{price}")
+    @GetMapping("/contracting/prc/{price}")
     public ResponseEntity<List<ContractingDTO>> showContractingByPrice(@PathVariable int price){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<ContractingDTO> contractingDTOList = contractingService.getContractingByPrice(price);
@@ -64,7 +65,7 @@ public class ContractingController {
         }
     }
 
-    @GetMapping("atomycapp/contracting/rgst/{date}")
+    @GetMapping("/contracting/rgst/{date}")
     public ResponseEntity<List<ContractingDTO>> showContractingByRegist(@PathVariable LocalDate date){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         List<ContractingDTO> contractingDTOList = contractingService.getContractingByRegist(date);
@@ -75,7 +76,7 @@ public class ContractingController {
         }
     }
 
-    @PostMapping("atomycapp/contracting")
+    @PostMapping("/contracting")
     public ResponseEntity<ContractingDTO> addContracting(@RequestBody ContractingDTO contractingDTO){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         ContractingDTO contractingSaved = contractingService.saveContracting(contractingDTO);
@@ -85,7 +86,7 @@ public class ContractingController {
             return new ResponseEntity<>(contractingSaved,HttpStatus.OK);
         }
     }
-    @PutMapping("atomycapp/contracting")
+    @PutMapping("/contracting")
     public ResponseEntity<ContractingDTO> updateContracting(@RequestBody ContractingDTO contractingDTO){
         myLog.info(context.getMethod() + " from " + context.getRemoteHost());
         ContractingDTO contractingSaved = contractingService.getContractingById(contractingDTO.getIdContracting());
@@ -96,7 +97,7 @@ public class ContractingController {
             return new ResponseEntity<>(contractingUPD,HttpStatus.OK);
         }
     }
-    @DeleteMapping("atomycapp/contracting/{idContracting}")
+    @DeleteMapping("/contracting/{idContracting}")
     public ResponseEntity<String> deleteContracting(@PathVariable Long idContracting){
         myLog.info(context.getMethod() + context.getRequestURI());
         contractingService.deleteContracting(idContracting);
